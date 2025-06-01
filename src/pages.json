@@ -1,0 +1,191 @@
+{
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+			"^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+		}
+	},
+	"pages": [ 
+		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "登录",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/login/register",
+			"style": {
+				"navigationBarTitleText": "注册",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/index/canteen-intro",
+			"style": {
+				"navigationBarTitleText": "餐厅介绍",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/index/dish-list",
+			"style": {
+				"navigationBarTitleText": "菜品列表",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/index/dish-detail",
+			"style": {
+				"navigationBarTitleText": "菜品详情",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/index/dish-comment",
+			"style": {
+				"navigationBarTitleText": "发表评价",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/profile/index",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/profile/edit-profile",
+			"style": {
+				"navigationBarTitleText": "编辑资料",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/profile/feedback",
+			"style": {
+				"navigationBarTitleText": "意见反馈",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/profile/privacy-policy",
+			"style": {
+				"navigationBarTitleText": "隐私政策",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/profile/user-agreement",
+			"style": {
+				"navigationBarTitleText": "用户协议",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/profile/about",
+			"style": {
+				"navigationBarTitleText": "关于我们",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/profile/change-password",
+			"style": {
+				"navigationBarTitleText": "修改密码",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/profile/settings",
+			"style": {
+				"navigationBarTitleText": "设置",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/evaluate/index",
+			"style": {
+				"navigationBarTitleText": "评价",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/message/index",
+			"style": {
+				"navigationBarTitleText": "消息",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/dining/index",
+			"style": {
+				"navigationBarTitleText": "开饭",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/workerindex/index",
+			"style": {
+				"navigationBarTitleText": "职工首页",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/workermanage/canteen-manage",
+			"style": {
+				"navigationBarTitleText": "食堂管理",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/workermanage/window-manage",
+			"style": {
+				"navigationBarTitleText": "窗口管理",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/workermanage/food-manage",
+			"style": {
+				"navigationBarTitleText": "菜品管理",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/workermanage/comment-manage",
+			"style": {
+				"navigationBarTitleText": "评论管理",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/workermanage/message-manage",
+			"style": {
+				"navigationBarTitleText": "消息管理",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/workermanage/profile",
+			"style": {
+				"navigationBarTitleText": "消息管理",
+				"navigationStyle": "custom"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}

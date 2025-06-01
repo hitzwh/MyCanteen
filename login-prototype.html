@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录界面原型</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .container {
+            display: flex;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 40px;
+        }
+        
+        /* 移动端预览部分 */
+        .mobile-preview {
+            width: 375px;
+            height: 667px;
+            background-color: white;
+            border-radius: 30px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            border: 10px solid #333;
+            flex-shrink: 0;
+        }
+        
+        .notch {
+            position: absolute;
+            width: 150px;
+            height: 25px;
+            background-color: #333;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            z-index: 10;
+        }
+        
+        .login-container {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 40px 30px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9f7e9 100%);
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 60px;
+            margin-bottom: 40px;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #34c759 0%, #2a9d4a 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 16px rgba(52, 199, 89, 0.3);
+        }
+        
+        .logo-icon {
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+        }
+        
+        .welcome-text {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .welcome-text h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .welcome-text p {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            font-size: 15px;
+            background-color: white;
+            transition: all 0.3s;
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: #34c759;
+            box-shadow: 0 0 0 3px rgba(52, 199, 89, 0.2);
+        }
+        
+        .input-group .icon {
+            position: absolute;
+            right: 15px;
+            top: 42px;
+            color: #999;
+        }
+        
+        .forgot-password {
+            text-align: right;
+            margin-bottom: 30px;
+        }
+        
+        .forgot-password a {
+            color: #34c759;
+            font-size: 14px;
+            text-decoration: none;
+        }
+        
+        .login-button {
+            background: linear-gradient(135deg, #34c759 0%, #2a9d4a 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 16px rgba(52, 199, 89, 0.3);
+        }
+        
+        .login-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(52, 199, 89, 0.4);
+        }
+        
+        .login-button:active {
+            transform: translateY(0);
+            box-shadow: 0 5px 10px rgba(52, 199, 89, 0.3);
+        }
+        
+        .other-options {
+            margin-top: 30px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .signup-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .signup-link a {
+            color: #34c759;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        /* 设计说明部分 */
+        .design-notes {
+            flex: 1;
+            background-color: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .design-notes h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .design-section {
+            margin-bottom: 25px;
+        }
+        
+        .design-section h3 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .design-section h3 span {
+            width: 24px;
+            height: 24px;
+            background-color: #34c759;
+            color: white;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        
+        .design-section p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .color-palette {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .color-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: white;
+            position: relative;
+        }
+        
+        .color-box span {
+            position: absolute;
+            bottom: -25px;
+            font-size: 11px;
+            color: #666;
+            white-space: nowrap;
+        }
+        
+        .responsive-note {
+            background-color: #e9f7e9;
+            border-left: 4px solid #34c759;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 20px;
+        }
+        
+        .responsive-note h4 {
+            color: #2a9d4a;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+        
+        .responsive-note p {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        @media (max-width: 1000px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .design-notes {
+                width: 100%;
+                margin-top: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 移动端登录界面预览 -->
+        <div class="mobile-preview">
+            <div class="notch"></div>
+            <div class="login-container">
+                <div class="logo-container">
+                    <div class="logo">
+                        <div class="logo-icon">C</div>
+                    </div>
+                </div>
+                
+                <div class="welcome-text">
+                    <h1>欢迎回来</h1>
+                    <p>请登录您的账号继续使用</p>
+                </div>
+                
+                <div class="input-group">
+                    <label for="username">账号</label>
+                    <input type="text" id="username" placeholder="请输入您的账号">
+                    <div class="icon">👤</div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">密码</label>
+                    <input type="password" id="password" placeholder="请输入您的密码">
+                    <div class="icon">🔒</div>
+                </div>
+                
+                <div class="forgot-password">
+                    <a href="#" id="forgot-link">忘记密码?</a>
+                </div>
+                
+                <button class="login-button" id="login-btn">登 录</button>
+                
+                <div class="other-options">
+                    还没有账号?
+                </div>
+                
+                <div class="signup-link">
+                    <a href="#" id="signup-link">立即注册</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 设计说明部分 -->
+        <div class="design-notes">
+            <h2>设计说明</h2>
+            
+            <div class="design-section">
+                <h3><span>1</span>视觉设计</h3>
+                <p>采用简洁现代的设计风格，使用柔和的绿色渐变背景增加视觉层次感。圆角元素和适当的阴影提升了界面的质感，使整体设计更加精致。</p>
+                <p>主色调使用绿色系，传达健康、自然和环保的品牌形象，同时保持视觉上的舒适度。</p>
+                
+                <div class="color-palette">
+                    <div class="color-box" style="background: #34c759">
+                        <span>主色调 #34c759</span>
+                    </div>
+                    <div class="color-box" style="background: #2a9d4a">
+                        <span>深色调 #2a9d4a</span>
+                    </div>
+                    <div class="color-box" style="background: #f8f9fa; color: #333">
+                        <span>背景色 #f8f9fa</span>
+                    </div>
+                    <div class="color-box" style="background: #333">
+                        <span>文字色 #333</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="design-section">
+                <h3><span>2</span>交互设计</h3>
+                <p>输入框采用浮动标签设计，提高表单填写的清晰度。按钮使用微妙的悬浮效果和按压反馈，增强交互体验。</p>
+                <p>登录按钮使用绿色渐变色和阴影效果，突出其作为主要操作的重要性，引导用户点击。</p>
+                <p>忘记密码和注册选项放置在视觉流程的末端，作为次要操作选项。</p>
+            </div>
+            
+            <div class="design-section">
+                <h3><span>3</span>用户体验考量</h3>
+                <p>表单元素间距合理，适合手指点击操作，减少误触几率。</p>
+                <p>输入框带有明确的视觉反馈，聚焦时边框变色并出现轻微阴影，提示用户当前操作状态。</p>
+                <p>使用图标增强视觉提示，帮助用户快速识别输入内容类型。</p>
+                <p>错误提示和成功反馈将通过轻量级的动画效果呈现，避免打断用户操作流程。</p>
+            </div>
+            
+            <div class="responsive-note">
+                <h4>响应式设计说明</h4>
+                <p>此设计针对移动设备进行了优化，在不同尺寸的手机屏幕上都能保持良好的视觉效果和操作体验。界面元素大小和间距经过精心调整，确保在320px-414px宽度范围内的设备上都能完美展示。</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 简单交互效果
+        document.getElementById('login-btn').addEventListener('click', function() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (!username || !password) {
+                alert('请输入账号和密码');
+                return;
+            }
+            
+            alert('登录成功！\n用户名: ' + username);
+        });
+        
+        document.getElementById('forgot-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('忘记密码功能将在后续版本中推出');
+        });
+        
+        document.getElementById('signup-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('注册功能将在后续版本中推出');
+        });
+        
+        // 输入框焦点效果
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.color = '#34c759';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.color = '';
+            });
+        });
+    </script>
+</body>
+</html> 
